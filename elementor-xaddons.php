@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Elementor Header and Text Widget
  * Description: Custom Elementor widget combining a header and text box.
- * Version: 1.0
+ * Version: 1.0.0
  * Author: Nima Amani <metananima@gmail.com>
  */
 
