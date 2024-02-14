@@ -2,7 +2,7 @@
 
 
 /*
- * Plugin Name:       Elementor Header and Text Widget
+ * Plugin Name:       Header and Text Widget for Elementor
  * Plugin URI:        https://github.com/MeTaNa-Nima/elementor-xaddons/
  * Description:       Custom Elementor widget combining a header and text box.
  * Version:           1.0.1
