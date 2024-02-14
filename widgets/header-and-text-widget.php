@@ -322,7 +322,7 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 			[
 				'label' => esc_html__('Padding', 'elementor'),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em', '%'],
+				'size_units' => ['px', 'em', '%', 'vw', 'vh'],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-header-text-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					'{{WRAPPER}} .elementor-header-text-wrapper .elementor-header-text-description' => 'margin: 0;',
