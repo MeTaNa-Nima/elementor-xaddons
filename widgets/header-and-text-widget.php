@@ -15,7 +15,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Box_Shadow;
-// use ElementorPro\Base\Base_Widget;
+use ElementorPro\Base\Base_Widget;
 // use ElementorPro\Plugin;
 // use Elementor\Control_Media;
 // use Elementor\Icons_Manager;
@@ -112,6 +112,41 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 		);
 
 		$this->add_control(
+			'sub_header_text',
+			[
+				'label' => esc_html__('Sub Header', 'elementor'),
+				'type' => Controls_Manager::TEXT,
+				'dynamic' => [
+					'active' => true,
+				],
+				'default' => esc_html__('This is the sub header', 'elementor'),
+				'placeholder' => esc_html__('Enter your sub header', 'elementor'),
+				'label_block' => true,
+				'separator' => 'none',				
+			]
+		);
+
+		$this->add_control(
+			'sub_header_size',
+			[
+				'label' => esc_html__('Sub Header HTML Tag', 'elementor'),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+					'span' => 'span',
+					'p' => 'p',
+				],
+				'default' => 'h2',
+			]
+		);
+
+		$this->add_control(
 			'title_text',
 			[
 				'label' => esc_html__('Title', 'elementor'),
@@ -119,35 +154,9 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 				'dynamic' => [
 					'active' => true,
 				],
-				'default' => esc_html__('This is the heading', 'elementor'),
+				'default' => esc_html__('This is the title', 'elementor'),
 				'placeholder' => esc_html__('Enter your title', 'elementor'),
 				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
-			'description_text',
-			[
-				'label' => esc_html__('Description', 'elementor'),
-				'type' => Controls_Manager::TEXTAREA,
-				'dynamic' => [
-					'active' => true,
-				],
-				'default' => esc_html__('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor'),
-				'placeholder' => esc_html__('Enter your description', 'elementor'),
-				'separator' => 'none',
-				'rows' => 10,
-			]
-		);
-
-		$this->add_control(
-			'link',
-			[
-				'label' => esc_html__('Link', 'elementor'),
-				'type' => Controls_Manager::URL,
-				'dynamic' => [
-					'active' => true,
-				],
 				'separator' => 'before',
 			]
 		);
@@ -171,6 +180,55 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 				'default' => 'h3',
 			]
 		);
+
+		$this->add_control(
+			'description_text',
+			[
+				'label' => esc_html__('Description', 'elementor'),
+				'type' => Controls_Manager::TEXTAREA,
+				'dynamic' => [
+					'active' => true,
+				],
+				'default' => esc_html__('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'elementor'),
+				'placeholder' => esc_html__('Enter your description', 'elementor'),
+				'separator' => 'before',
+				'rows' => 10,
+			]
+		);
+
+		$this->add_control(
+			'description_size',
+			[
+				'label' => esc_html__('Description HTML Tag', 'elementor'),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'h1' => 'H1',
+					'h2' => 'H2',
+					'h3' => 'H3',
+					'h4' => 'H4',
+					'h5' => 'H5',
+					'h6' => 'H6',
+					'div' => 'div',
+					'span' => 'span',
+					'p' => 'p',
+				],
+				'default' => 'p',
+			]
+		);
+
+		$this->add_control(
+			'link',
+			[
+				'label' => esc_html__('Link', 'elementor'),
+				'type' => Controls_Manager::URL,
+				'dynamic' => [
+					'active' => true,
+				],
+				'separator' => 'before',
+			]
+		);
+
+		
 
 		$this->add_control(
 			'view',
@@ -301,6 +359,87 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		$this->end_controls_section();
+
+		// Style Tab: Subheader
+		$this->start_controls_section(
+			'section_style_subheader',
+			[
+				'label' => esc_html__('Subheader', 'elementor'),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'subheader_bottom_space',
+			[
+				'label' => esc_html__('Spacing', 'elementor'),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-header-text-subheader' => 'margin: 0 0 {{SIZE}}{{UNIT}} 0;',
+				],
+			]
+		);
+
+		$this->add_control(
+			'subheader_color',
+			[
+				'label' => esc_html__('Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .elementor-header-text-subheader' => 'color: {{VALUE}};',
+				],
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'subheader_typography',
+				'selector' => '{{WRAPPER}} .elementor-header-text-subheader',
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Stroke::get_type(),
+			[
+				'name' => 'subheader_stroke',
+				'selector' => '{{WRAPPER}} .elementor-header-text-subheader',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'subheader_shadow',
+				'selector' => '{{WRAPPER}} .elementor-header-text-subheader',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Style Tab: Title
+		$this->start_controls_section(
+			'section_style_content',
+			[
+				'label' => esc_html__('Title', 'elementor'),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
 		$this->add_responsive_control(
 			'title_bottom_space',
 			[
@@ -314,19 +453,8 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-header-text-title' => 'margin: 0 0 {{SIZE}}{{UNIT}} 0;',
-					'{{WRAPPER}} .elementor-header-text-description' => 'margin: 0 0 {{SIZE}}{{UNIT}} 0;',
 
 				],
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style_content',
-			[
-				'label' => esc_html__('Content', 'elementor'),
-				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 
@@ -466,10 +594,9 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 
 		$this->end_controls_tabs();
 
-
-
 		$this->end_controls_section();
 
+		// Style Tab: Description
 		$this->start_controls_section(
 			'section_style_description',
 			[
@@ -536,7 +663,7 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 
-		$has_content = !Utils::is_empty($settings['title_text']) || !Utils::is_empty($settings['description_text']);
+		$has_content = !Utils::is_empty($settings['sub_header_text']) || !Utils::is_empty($settings['title_text']) || !Utils::is_empty($settings['description_text']);
 
 		$html = '<div class="elementor-header-text-wrapper">';
 
@@ -546,6 +673,17 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 
 		if ($has_content) {
 			$html .= '<div class="elementor-header-text-content">';
+
+			if(!Utils::is_empty($settings['sub_header_text'])) {
+				$this->add_render_attribute('sub_header_text', 'class', 'elementor-header-text-subheader');
+
+				$this->add_inline_editing_attributes('sub_header_text');
+
+				$sub_header_html = $settings['sub_header_text'];
+
+				$html .= sprintf('<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag($settings['sub_header_size']), $this->get_render_attribute_string('sub_header_text'), $sub_header_html);
+
+			}
 
 			if (!Utils::is_empty($settings['title_text'])) {
 				$animation_class = !empty($settings['hover_animation']) ? 'elementor-animation-' . $settings['hover_animation'] : '';
@@ -567,7 +705,10 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 
 				$this->add_inline_editing_attributes('description_text');
 
-				$html .= sprintf('<p %1$s>%2$s</p>', $this->get_render_attribute_string('description_text'), $settings['description_text']);
+				$description_html = $settings['description_text'];
+
+				$html .= sprintf('<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag($settings['description_size']), $this->get_render_attribute_string('description_text'), $description_html);
+
 			}
 
 			$html .= '</div>';
@@ -589,7 +730,71 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 	protected function content_template()
 	{
 ?>
-		<# var html='<div class="elementor-header-text-wrapper">' ; var hasContent=!! ( settings.title_text || settings.description_text ); if ( hasContent ) { html +='<div class="elementor-header-text-content">' ; if ( settings.title_text ) { var title_html=settings.title_text, titleSizeTag=elementor.helpers.validateHTMLTag( settings.title_size ), animationClass=settings.hover_animation ? ' elementor-animation-' + settings.hover_animation : '' ; if ( settings.link.url ) { title_html='<a href="' + _.escape( settings.link.url ) + '">' + title_html + '</a>' ; } view.addRenderAttribute( 'title_text' , 'class' , 'elementor-header-text-title' + animationClass ); view.addInlineEditingAttributes( 'title_text' , 'none' ); html +='<' + titleSizeTag + ' ' + view.getRenderAttributeString( 'title_text' ) + '>' + title_html + '</' + titleSizeTag + '>' ; } if ( settings.description_text ) { view.addRenderAttribute( 'description_text' , 'class' , 'elementor-header-text-description' ); view.addInlineEditingAttributes( 'description_text' ); html +='<p ' + view.getRenderAttributeString( 'description_text' ) + '>' + settings.description_text + '</p>' ; } html +='</div>' ; } html +='</div>' ; print( html ); #>
+		<#
+		var html = '<div class="elementor-header-text-wrapper">';
+		var hasContent = !!(settings.sub_header_text || settings.title_text || settings.description_text);
+		if (hasContent) {
+			html += '<div class="elementor-header-text-content">';
+			if (settings.sub_header_text) {
+				var sub_header_html = settings.sub_header_text,
+					subHeaderSizeTag = elementor.helpers.validateHTMLTag(settings.sub_header_size);
+				view.addRenderAttribute("sub_header_text", "class", "elementor-header-text-subheader");
+				view.addInlineEditingAttributes("sub_header_text", "none");
+				html +=
+					"<" +
+					subHeaderSizeTag +
+					" " +
+					view.getRenderAttributeString("sub_header_text") +
+					">" +
+					sub_header_html +
+					"</" +
+					subHeaderSizeTag +
+					">";
+			}
+			if (settings.title_text) {
+				var title_html = settings.title_text,
+					titleSizeTag = elementor.helpers.validateHTMLTag(settings.title_size),
+					animationClass = settings.hover_animation
+						? " elementor-animation-" + settings.hover_animation
+						: "";
+				if (settings.link.url) {
+					title_html = '<a href="' + _.escape(settings.link.url) + '">' + title_html + "</a>";
+				}
+				view.addRenderAttribute("title_text", "class", "elementor-header-text-title" + animationClass);
+				view.addInlineEditingAttributes("title_text", "none");
+				html +=
+					"<" +
+					titleSizeTag +
+					" " +
+					view.getRenderAttributeString("title_text") +
+					">" +
+					title_html +
+					"</" +
+					titleSizeTag +
+					">";
+			}
+			if (settings.description_text) {
+			var description_html = settings.description_text,
+				descriptionSizeTag = elementor.helpers.validateHTMLTag(settings.description_size);
+			view.addRenderAttribute("description_text", "class", "elementor-header-text-description");
+			view.addInlineEditingAttributes("description_text", "none");
+			html +=
+				"<" +
+				descriptionSizeTag +
+				" " +
+				view.getRenderAttributeString("description_text") +
+				">" +
+				description_html +
+				"</" +
+				descriptionSizeTag +
+				">";
+			}
+			html += "</div>";
+		}
+		html += "</div>";
+		print(html);
+
+		#>
 	<?php
 	}
 }
