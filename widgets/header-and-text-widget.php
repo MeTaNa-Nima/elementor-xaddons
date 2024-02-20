@@ -241,6 +241,7 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 
 		$this->end_controls_section();
 
+		// Style Tab: Box
 		$this->start_controls_section(
 			'section_style_box',
 			[
@@ -381,6 +382,9 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 						'max' => 100,
 					],
 				],
+				'default' => [
+					'size' => 0,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-header-text-subheader' => 'margin: 0 0 {{SIZE}}{{UNIT}} 0;',
 				],
@@ -451,6 +455,9 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 						'max' => 100,
 					],
 				],
+				'default' => [
+					'size' => 0,
+				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-header-text-title' => 'margin: 0 0 {{SIZE}}{{UNIT}} 0;',
 
@@ -466,6 +473,7 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-header-text-title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-header-text-title a' => 'color: {{VALUE}};',
 				],
 				'global' => [
 					'default' => Global_Colors::COLOR_PRIMARY,
@@ -564,14 +572,6 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Css_Filter::get_type(),
-			[
-				'name' => 'css_filters_hover',
-				'selector' => '{{WRAPPER}}:hover .elementor-header-text-title',
-			]
-		);
-
 		$this->add_control(
 			'header_opacity_hover',
 			[
@@ -586,6 +586,19 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}}:hover .elementor-header-text-title' => 'opacity: {{SIZE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'title_color_hover',
+			[
+				'label' => esc_html__('Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .elementor-header-text-title:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-header-text-title a:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
