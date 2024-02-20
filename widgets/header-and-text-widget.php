@@ -307,17 +307,6 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'background_color',
-			[
-				'label' => esc_html__('Background Color', 'elementor'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .elementor-header-text-wrapper' => 'background-color: {{VALUE}};',
-				]
-			]
-		);
-
 		$this->add_responsive_control(
 			'content_padding',
 			[
@@ -331,22 +320,103 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 			]
 		);
 
+		// Box Fx Start
+		$this->start_controls_tabs('box_effects');
+
+		$this->start_controls_tab(
+			'box_normal',
+			[
+				'label' => esc_html__('Hover', 'elementor'),
+			]
+		);
+
+		$this->add_control(
+			'background_color_normal',
+			[
+				'label' => esc_html__('Background Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-header-text-wrapper' => 'background-color: {{VALUE}};',
+				]
+			]
+		);
+
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
-				'name' => 'content_border',
+				'name' => 'content_border_normal',
 				'selector' => '{{WRAPPER}} .elementor-header-text-wrapper',
-				'separator' => 'before',
 			]
 		);
 
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
-				'name' => 'content_box_shadow',
+				'name' => 'content_box_shadow_normal',
 				'selector' => '{{WRAPPER}} .elementor-header-text-wrapper',
 			]
 		);
+
+		$this->add_control(
+			'box_background_hover_transition',
+			[
+				'label' => esc_html__('Transition Duration', 'elementor'),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0.3,
+				],
+				'range' => [
+					'px' => [
+						'max' => 3,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-header-text-wrapper' => 'transition-duration: {{SIZE}}s',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'box_hover',
+			[
+				'label' => esc_html__('Normal', 'elementor'),
+			]
+		);
+
+		$this->add_control(
+			'background_color_hover',
+			[
+				'label' => esc_html__('Background Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-header-text-wrapper:hover' => 'background-color: {{VALUE}};',
+				]
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'content_border_hover',
+				'selector' => '{{WRAPPER}} .elementor-header-text-wrapper:hover',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'content_box_shadow_hover',
+				'selector' => '{{WRAPPER}} .elementor-header-text-wrapper:hover',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+		// Box Fx End
 
 		$this->add_responsive_control(
 			'content_border_radius',
