@@ -440,6 +440,7 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
+		
 
 		$this->add_responsive_control(
 			'subheader_bottom_space',
