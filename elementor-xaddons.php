@@ -23,3 +23,12 @@ function register_header_text_widget($widgets_manager)
 	$widgets_manager->register(new \Elementor_Header_And_Text_Widget());
 }
 add_action('elementor/widgets/register', 'register_header_text_widget');
+
+
+function xaddons_enqueue_admin_script()
+{
+	if (current_user_can('administrator')) {
+		wp_enqueue_script('xaddons-edit-post-script', plugin_dir_url(__FILE__) . 'js/edit-post.js', array('jquery'), null, true);
+	}
+}
+add_action('wp_enqueue_scripts', 'xaddons_enqueue_admin_script');
