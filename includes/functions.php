@@ -31,8 +31,11 @@ function xaddons_dashboard_widget_display()
 <?php
 }
 
+
+
+
 function currentYear($atts)
 {
     return date('Y');
 }
-add_shortcode('year', 'currentYear');
+add_shortcode('currentYear', 'currentYear');
