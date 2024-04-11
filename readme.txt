@@ -10,7 +10,9 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
 
 Nothing Special, just a widget that contains subHeader, Header (title) and Text with manyu useful styleing controls which I think elementor needed to have.
+- Elementor Widget that has a subtitle, title and text/description with many styles and controllers.
+- can add css styles to admin area.
+- adds a "Edit Post" to elementors posts and loop items in front area if logged in as admin.
 
 Planned Widgets:
 - add img and icon, and more controls for widget.
-- add NOTICE/WARNING to not remove this addon in admin

@@ -5,7 +5,7 @@
  * Plugin Name:       Header and Text Widget for Elementor
  * Plugin URI:        https://github.com/MeTaNa-Nima/elementor-xaddons/
  * Description:       Custom Elementor widget combining a header and text box.
- * Version:           1.0.8
+ * Version:           1.0.9
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Nima Amani MeTaNa <metananima@gmail.com>
@@ -15,8 +15,33 @@
  * Update URI:        https://github.com/MeTaNa-Nima/elementor-xaddons/
  */
 
+define('XADDONS_VERSION', '1.0.9');
+
+
 define('XADDONS_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('XADDONS_VERSION', '1.0.8');
+require_once(__DIR__ . '/includes/admin-settings-page.php');
+require_once(__DIR__ . '/includes/functions.php');
+
+
+function xaddons_plugin_menu()
+{
+	add_menu_page(__('Elementor X Addons'), 'Elementor X Addons', 'manage_options', 'elementor-xaddons', 'xaddons_plugin_options_page');
+}
+add_action('admin_menu', 'xaddons_plugin_menu');
+
+function xaddons_plugin_options_page()
+{
+	if (!current_user_can('manage_options')) {
+		wp_die(__('You do not have sufficient permissions to access this page.'));
+	}
+?>
+	<div class="wrap">
+		<h1>Elementor X Addons</h1>
+		<p>Welcome to the Elementor X Addons page.</p>
+		<?php xaddons_admin_settings_page(); ?>
+	</div>
+<?php
+}
 
 function register_header_text_widget($widgets_manager)
 {
@@ -34,17 +59,3 @@ function xaddons_enqueue_admin_script()
 	}
 }
 add_action('wp_enqueue_scripts', 'xaddons_enqueue_admin_script');
-
-
-function xaddons_admin_notice()
-{
-	$user = wp_get_current_user();
-	if ($user->has_cap('manage_options')) {
-		echo '<div class="notice notice-warning is-dismissible">';
-		echo '<p>xAddons for Elementor v' . XADDONS_VERSION . ' is installed.</p>';
-		echo '<p>Please notice that this plugin is in use in pages, posts and templates, uninstalling it may break them.</p>';
-		echo '<p>For more details, please visit <a href="https://github.com/MeTaNa-Nima/elementor-xaddons/" target="_blank">https://github.com/MeTaNa-Nima/elementor-xaddons/</a></p>';
-		echo '</div>';
-	}
-}
-add_action('admin_notices', 'xaddons_admin_notice');
