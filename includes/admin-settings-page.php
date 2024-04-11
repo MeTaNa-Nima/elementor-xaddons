@@ -8,7 +8,6 @@ function xaddons_admin_settings_page()
         }
     }
 
-    // Initialize CodeMirror editor for the textarea
     $codeMirrorSettings = [
         'codeMirrorTextArea' => 'elementor_xaddons_styles_editor',
         'codeMirrorSettings' => [
