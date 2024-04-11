@@ -1,0 +1,15 @@
+.elementor-post:hover .xn-edit-post-link,
+.e-loop-item:hover .xn-edit-post-link {
+	display: block;
+	position: absolute;
+	padding: 5px 10px;
+	background-color: #640994;
+	color: #fff;
+	border-radius: 7px;
+}
+
+.elementor-post .xn-edit-post-link,
+.e-loop-item .xn-edit-post-link {
+	display: none;
+	transition: all 0.3s ease;
+}

@@ -12,6 +12,5 @@ Here is a short description of the plugin.  This should be no more than 150 char
 Nothing Special, just a widget that contains subHeader, Header (title) and Text with manyu useful styleing controls which I think elementor needed to have.
 
 Planned Widgets:
-- add edit post btn (dynamic url via ID) if user is logged in as admin or has access to edit.
 - add img and icon, and more controls for widget.
 - add NOTICE/WARNING to not remove this addon in admin

@@ -1,5 +1,6 @@
 jQuery(document).ready(function ($) {
-	$('.elementor-post, .elementor-loop-item').each(function () {
+	var editablePosts = $('.elementor-post, .e-loop-item');
+	editablePosts.each(function () {
 		var classList = $(this).attr('class').split(/\s+/);
 		var postId = null;
 
@@ -13,7 +14,10 @@ jQuery(document).ready(function ($) {
 
 		if (postId) {
 			var editUrl = 'http://xaddon.test/wp-admin/post.php?post=' + postId + '&action=edit';
-			$(this).append('<a href="' + editUrl + '" class="edit-post-link">Edit Post</a>');
+			$(this)
+				.children('div')
+				.first()
+				.append('<a href="' + editUrl + '" class="xn-edit-post-link">Edit Post</a>');
 		}
 	});
 });
