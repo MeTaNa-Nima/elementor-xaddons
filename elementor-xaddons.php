@@ -50,6 +50,15 @@ function register_header_text_widget($widgets_manager)
 }
 add_action('elementor/widgets/register', 'register_header_text_widget');
 
+function register_dynamic_edit_url_tag($dynamic_tags_manager)
+{
+	\Elementor\Plugin::$instance->dynamic_tags->register_group('x-addons-dynamic-tag', [
+		'title' => 'Post ID and Edits'
+	]);
+	require_once(__DIR__ . '/dynamic-tags/edit-url-dynamic-tag.php');
+	$dynamic_tags_manager->register(new \Elementor_Dynamic_Edit_Url_Tag());
+}
+add_action('elementor/dynamic_tags/register', 'register_dynamic_edit_url_tag');
 
 function xaddons_enqueue_admin_script()
 {
