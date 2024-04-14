@@ -27,7 +27,6 @@ class Elementor_Dynamic_Edit_Url_Tag extends \Elementor\Core\DynamicTags\Tag
     {
         return [
             \Elementor\Modules\DynamicTags\Module::URL_CATEGORY,
-            \Elementor\Modules\DynamicTags\Module::TEXT_CATEGORY,
         ];
     }
 
