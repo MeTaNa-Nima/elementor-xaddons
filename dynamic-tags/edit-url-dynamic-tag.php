@@ -45,7 +45,6 @@ class Elementor_Dynamic_Edit_Url_Tag extends \Elementor\Core\DynamicTags\Tag
                     'block' => 'Block',
                 ],
                 'default' => 'default',
-                'description' => 'Select the editor type.'
             ]
         );
     }
