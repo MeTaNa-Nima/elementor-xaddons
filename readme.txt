@@ -11,8 +11,11 @@ Here is a short description of the plugin.  This should be no more than 150 char
 
 Nothing Special, just a widget that contains subHeader, Header (title) and Text with manyu useful styleing controls which I think elementor needed to have.
 - Elementor Widget that has a subtitle, title and text/description with many styles and controllers.
-- can add css styles to admin area.
 - adds a "Edit Post" to elementors posts and loop items in front area if logged in as admin.
+- Glass Blur Effect
 
-Planned Widgets:
-- add img and icon, and more controls for widget.
+Depricated:
+- Admin CSS styleing.
+- Admin Area Page.
+
+TODO: add img and icon, and more controls for widget.

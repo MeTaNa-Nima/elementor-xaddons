@@ -22,19 +22,18 @@ function xaddons_dashboard_widget()
     );
 }
 add_action('wp_dashboard_setup', 'xaddons_dashboard_widget');
+
 function xaddons_dashboard_widget_display()
 {
 ?>
     <p>check for updates at <a href="https://github.com/MeTaNa-Nima/elementor-xaddons/" target="_blank">https://github.com/MeTaNa-Nima/elementor-xaddons/</a></p>
     <div>Use <input type="text" readonly value="[currentYear]" onfocus="this.select()"> shortcode to display the current year, current year is <?php echo date('Y'); ?>.</div>
-    <p>You can add custom CSS for admin area to the editor in the <a href="/wp-admin/admin.php?page=elementor-xaddons">xAddons Options Page</a></p>
 <?php
 }
-
 if (!function_exists('currentYearShortcode')) {
     function currentYearShortcode($atts)
     {
         return date('Y');
     }
 }
-add_shortcode('current_year', 'currentYear');
+add_shortcode('currentYear', 'currentYearShortcode');

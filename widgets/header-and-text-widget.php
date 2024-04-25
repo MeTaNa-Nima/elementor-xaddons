@@ -316,7 +316,7 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'box_normal',
 			[
-				'label' => esc_html__('Hover', 'elementor'),
+				'label' => esc_html__('Normal', 'elementor'),
 			]
 		);
 
@@ -328,6 +328,27 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .elementor-header-text-wrapper' => 'background-color: {{VALUE}};',
 				]
+			]
+		);
+
+		$this->add_control(
+			'glass_blur_effect',
+			[
+				'label' => esc_html__('Glass Effect', 'elementor'),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+					],
+				],
+				'default' => [
+					'size' => 0,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-header-text-wrapper' => 'backdrop-filter: blur({{SIZE}}px)'
+				],
+
 			]
 		);
 
@@ -372,7 +393,7 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 		$this->start_controls_tab(
 			'box_hover',
 			[
-				'label' => esc_html__('Normal', 'elementor'),
+				'label' => esc_html__('Hover', 'elementor'),
 			]
 		);
 
@@ -384,6 +405,24 @@ class Elementor_Header_And_Text_Widget extends \Elementor\Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .elementor-header-text-wrapper:hover' => 'background-color: {{VALUE}};',
 				]
+			]
+		);
+
+		$this->add_control(
+			'glass_blur_effect_hover',
+			[
+				'label' => esc_html__('Glass Effect', 'elementor'),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-header-text-wrapper:hover' => 'backdrop-filter: blur({{SIZE}}px)'
+				]
+
 			]
 		);
 
